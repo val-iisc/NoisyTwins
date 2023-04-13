@@ -1,0 +1,60 @@
+DATA:
+  name: "AnimalFace_FS"
+  img_size: 64
+  num_classes: 20
+MODEL:
+  backbone: "stylegan2"
+  g_cond_mtd: "cAdaIN"
+  d_cond_mtd: "SPD"
+  g_act_fn: "Auto"
+  d_act_fn: "Auto"
+  z_prior: "gaussian"
+  z_dim: 512
+  w_dim: 512
+  g_conv_dim: "N/A"
+  d_conv_dim: "N/A"
+  apply_g_ema: True
+  bool_plot_emb_norm: True
+  add_emb_noise: True
+  effective_number_samples_beta: 0
+  emb_noise_std: 0.5
+LOSS:
+  adv_loss: "logistic"
+  apply_r1_reg: True
+  r1_lambda: 0.01
+  r1_place: "outside_loop"
+  apply_noisytwins: True
+  noisytwins_lambda: 0.001
+  noisytwins_momentum_lambda: 0.05
+  noisytwins_start_iter: 0
+OPTIMIZATION:
+  # These values will be slightly changed if lazy regularization is applied.
+  batch_size: 128
+  acml_steps: 1
+  g_lr: 0.0025
+  d_lr: 0.0025
+  beta1: 0
+  beta2: 0.99
+  d_first: False
+  g_updates_per_step: 1
+  d_updates_per_step: 1
+  total_steps: 100000
+AUG:
+  apply_ada: True
+  ada_aug_type: "bgc"
+  ada_initial_augment_p: 0
+  ada_target: 0.6
+  ada_kimg: 500
+  ada_interval: 4
+STYLEGAN:
+  g_reg_interval: 4
+  d_reg_interval: 16
+  mapping_network: 2
+  style_mixing_p: 0
+  g_ema_kimg: 500
+  g_ema_rampup: 0.05
+  apply_pl_reg: True
+  pl_weight: 2
+  pl_start_iter: 0
+  d_architecture: "resnet"
+  d_epilogue_mbstd_group_size: 32
