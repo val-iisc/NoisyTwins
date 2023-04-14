@@ -79,8 +79,13 @@ Most of the code related to the noise augmentation has been added in ``src/model
 ## Citation
 If you find our code or work useful in any way, please consider citing us:
 
-```bibtex
-
+```
+@inproceedings{rangwani2023noisytwins,
+  author    = {Rangwani, Harsh and Bansal, Lavish and Sharma, Kartik and Karmali, Tejan and Jampani, Varun and Babu, R. Venkatesh},
+  title     = {NoisyTwins: Class-Consistent and Diverse Image Generation through StyleGANs},
+  booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year      = {2023},
+}
 ```
 Please contact ``harshr@iisc.ac.in`` in case you have any comments or suggestions.
 
