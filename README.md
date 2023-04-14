@@ -85,6 +85,8 @@ If you find our code or work useful in any way, please consider citing us:
 Please contact ``harshr@iisc.ac.in`` in case you have any comments or suggestions.
 
 ## Acknowledgements 
+Our code is based on StudioGAN and supports all the functionality offered by StudioGAN.
+
 PyTorch-StudioGAN: https://github.com/POSTECH-CVLab/PyTorch-StudioGAN
 
 
