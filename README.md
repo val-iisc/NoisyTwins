@@ -12,7 +12,7 @@ Vision and AI Lab, IISc Bangalore
   <img width="50%" src="https://github.com/val-iisc/NoisyTwins/blob/main/assets/Teaser.jpg?raw=true" />
 </p>
 
-**TLDR**: NoisyTwins is a self-supervised regularization scheme for StyleGANs, which helps in alleviating mode collapse and leads to consistent conditional image generation.
+**TLDR**: NoisyTwins is a self-supervised regularization scheme for StyleGANs, which helps in alleviating mode collapse and leads to consistent conditional fine-grained image generation.
 
 
 ## Datasets
