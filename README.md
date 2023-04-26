@@ -8,9 +8,13 @@ Vision and AI Lab, IISc Bangalore
 
 **CVPR 2023**
 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/noisytwins-class-consistent-and-diverse-image/conditional-image-generation-on-imagenet-lt)](https://paperswithcode.com/sota/conditional-image-generation-on-imagenet-lt?p=noisytwins-class-consistent-and-diverse-image)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/noisytwins-class-consistent-and-diverse-image/image-generation-on-inaturalist-2019)](https://paperswithcode.com/sota/image-generation-on-inaturalist-2019?p=noisytwins-class-consistent-and-diverse-image)
 <p align="center">
   <img width="50%" src="https://github.com/val-iisc/NoisyTwins/blob/main/assets/Teaser.jpg?raw=true" />
 </p>
+
+
 
 **TLDR**: NoisyTwins is a self-supervised regularization scheme for StyleGANs, which helps in alleviating mode collapse and leads to consistent conditional fine-grained image generation.
 
