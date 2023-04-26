@@ -76,6 +76,24 @@ For hyper-parameters not specified in config file, their default values will be 
 ## Code Implementation of NoisyTwins in different files
 Most of the code related to the noise augmentation has been added in ``src/models/stylegan2.py``. The code of Barlow Twins based NoisyTwins Regulariser has been present in ``src/utils/barlow.py`` and ``src/utils/sample.py`` for creating the twins and loss calculation. In ``src/worker.py``, the NoisyTwins loss in integrated with other losses in the main training loop.
 
+## Results
+We provide the results below for ImageNet-LT (left) and iNaturalist 2019 (right). For more details please check our paper.
+
+
+
+| Method  | FID    ImgNet                 | FID_CLIP    | iFID_CLIP    | Precision  | Recall       | FID     iNat                | FID_CLIP    | iFID_CLIP    | Precision  | Recall       |
+|---------|-------------------------|-------------|--------------|------------|--------------|-------------------------|-------------|--------------|------------|--------------|
+| SG2     | 41.25                   | 11.64       | 46.93        | 0.50       | 0.48         | 19.34                   | 3.33        | 38.24        | 0.74       | 0.17         |
+| SG2+ADA | 37.20                   | 11.04       | 47.41        | 0.54       | 0.38         | 14.92                   | 2.30        | 35.19        | 0.75       | 0.57         |
+| SG2+ADA+gSR | 24.78               | 8.21        | 44.42        | 0.63       | 0.35         | 15.17                   | 2.06        | 36.22        | 0.74       | 0.46         |
+| SG2+ADA+Noise (Ours) | 22.17       | 7.11        | 41.20        | 0.72       | 0.33         | 12.87                   | 1.37        | 31.43        | 0.81       | 0.63         |
+| + NoisyTwins (Ours) | 21.29        | 6.41        | 39.74        | 0.67       | 0.49         | 11.46                   | 1.14        | 31.50        | 0.79       | 0.67         |
+
+
+
+## Additional Metrics
+We also provide evaluation metrics of FID and iFID using the CLIP backbone. We find these metrics to be very reliable in comparison to Inception based metrics. For evaluating metrics with CLIP backbone specify ``--eval_backbone CLIP`` while running the evaluation. Please look at ``run_script.sh`` for commands required for evaluation.
+
 ## Citation
 If you find our code or work useful in any way, please consider citing us:
 
