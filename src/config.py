@@ -339,7 +339,7 @@ class Configurations(object):
         self.STYLEGAN.apply_pl_reg = False
         # pl regularization strength, default 2
         self.STYLEGAN.pl_weight = "N/A"
-        # step_count to start applying noisytwins
+        # step_count to start applying path length regularizer
         self.STYLEGAN.pl_start_iter = "N/A" 
         # discriminator architecture for STYLEGAN. 'resnet' except for cifar10 ('orig')
         self.STYLEGAN.d_architecture = "N/A"

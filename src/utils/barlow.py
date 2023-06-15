@@ -1,40 +1,29 @@
 """Base Barlow Twins implementation (BarlowTwinsLoss) taken from
-https://github.com/facebookresearch/barlowtwins/blob/main/main.py"""
+https://github.com/facebookresearch/barlowtwins/blob/main/main.py
+
+MIT License
+Copyright (c) Facebook, Inc. and its affiliates.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
+
 from typing import Tuple
 import torch
 from torch import nn
-from kornia import augmentation as K
-
-
-class DiffTransform(nn.Module):
-    def __init__(self, crop_resize: int = 224):
-        super().__init__()
-
-        self.transform = K.AugmentationSequential(
-            K.Normalize(mean=torch.tensor(-1), std=torch.tensor(2)),  # from [-1, 1] to [0, 1]
-            K.RandomResizedCrop((crop_resize, crop_resize), resample='BICUBIC'),
-            K.RandomHorizontalFlip(p=0.5),
-            K.ColorJitter(brightness=0.4, contrast=0.4, saturation=0.2, hue=0.1, p=0.8),
-            K.RandomGrayscale(p=0.2),
-            K.RandomGaussianBlur(kernel_size=(3, 3), sigma=(1.05, 1.05), p=0.5),
-            K.RandomSolarize(thresholds=(0, 0.5), additions=0, p=0.0),
-            K.Normalize(mean=torch.tensor(0.5), std=torch.tensor(0.5)),  # back to [-1, 1]
-        )
-        self.transform_prime = K.AugmentationSequential(
-            K.Normalize(mean=torch.tensor(-1), std=torch.tensor(2)),
-            K.RandomResizedCrop((crop_resize, crop_resize), resample='BICUBIC'),
-            K.RandomHorizontalFlip(p=0.5),
-            K.ColorJitter(brightness=0.4, contrast=0.4, saturation=0.2, hue=0.1, p=0.8),
-            K.RandomGrayscale(p=0.2),
-            K.RandomGaussianBlur(kernel_size=(3, 3), sigma=(1.05, 1.05), p=0.1),
-            K.RandomSolarize(thresholds=(0, 0.5), additions=0, p=0.2),
-            K.Normalize(mean=torch.tensor(0.5), std=torch.tensor(0.5)),
-        )
-
-    def forward(self, x: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
-        y1 = self.transform(x)
-        y2 = self.transform_prime(x)
-        return y1, y2
 
 
 class BarlowTwins(nn.Module):
@@ -84,10 +73,6 @@ class BarlowTwins(nn.Module):
 
 
 def compute_contrastive(hierarchical_feats1, hierarchical_feats2, barlow_twins, weighting=0.01):
-    # Modify Contrastive Loss Implementation
-    # y1, y2 = transform(images)
-    # hierarchical_feats1 = discriminator(y1, c=c, step=step, alpha=alpha, return_hierarchical=True)
-    # hierarchical_feats2 = discriminator(y2, c=c, step=step, alpha=alpha, return_hierarchical=True)
 
     feats1 = hierarchical_feats1
     feats2 = hierarchical_feats2
