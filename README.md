@@ -14,7 +14,7 @@ Vision and AI Lab, IISc Bangalore
   <img width="50%" src="https://github.com/val-iisc/NoisyTwins/blob/main/assets/Teaser.jpg?raw=true" />
 </p>
 
-
+**Update**: Thanks to @prajwalsingh for providing NoisyTwins implementation on base StyleGAN2: (https://github.com/prajwalsingh/StyleGAN2-NosiyTwins)
 
 **TLDR**: NoisyTwins is a self-supervised regularization scheme for StyleGANs, which helps in alleviating mode collapse and leads to consistent conditional fine-grained image generation.
 
